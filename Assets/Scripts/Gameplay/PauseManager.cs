@@ -10,6 +10,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject background;
     [SerializeField] GameObject controlsMenuUI;
     [SerializeField] GameObject quitToMenuUI;
+    [SerializeField] Button continueButton;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,7 @@ public class PauseManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         background.SetActive(true);
         mainPauseMenuUI.SetActive(true);
+        continueButton.Select();
         Time.timeScale = 0;
     }
     public void Continue()
