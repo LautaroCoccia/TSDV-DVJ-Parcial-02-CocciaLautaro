@@ -93,6 +93,8 @@ GameObject:
   - component: {fileID: 3381819452258716663}
   - component: {fileID: 3381819452258716660}
   - component: {fileID: 3381819452258716662}
+  - component: {fileID: 4827299372759316909}
+  - component: {fileID: 4682543581753794126}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -127,8 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062101b9c66a7ca4dbfce385f22fe7ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationForce: 100
+  rotationSpeed: 0
   powerForce: 2
+  fuel: 0
   horizontalVelocity: 0
   verticalVelocity: 0
 --- !u!50 &3381819452258716660
@@ -178,3 +181,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.91, y: 1.13}
   m_EdgeRadius: 0
+--- !u!114 &4827299372759316909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381819452258716658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a221287b1e72e334b9c14e4d30a4428a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4682543581753794126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3381819452258716658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e1105b29c313d4f815c6508e46c808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altitude: 0
