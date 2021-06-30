@@ -8,6 +8,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI altitude;
     [SerializeField] TextMeshProUGUI verticalSpeed;
     [SerializeField] TextMeshProUGUI horizontalSpeed;
+    [SerializeField] TextMeshProUGUI highscoreUI;
     [SerializeField] GameObject player;
 
     PlayerMovement playerMovement;
@@ -42,8 +43,10 @@ public class HUDManager : MonoBehaviour
         scoreUI += newScore;
         if(scoreUI> highscore)
         {
-            Highscore.SaveHighscore(scoreUI);
+            highscore = scoreUI;
+            Highscore.SaveHighscore(highscore);
         }
+            highscoreUI.text = "Highscore: " + highscore;
         score.text = scoreUI.ToString();
     }
     public void RestartHUD()
