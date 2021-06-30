@@ -24,8 +24,6 @@ public class SceneLoader : MonoBehaviour
         while(!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
-            Debug.Log(progress);
-
             yield return null;
         }
     }

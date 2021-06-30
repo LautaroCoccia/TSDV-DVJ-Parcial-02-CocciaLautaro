@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour
 
     PlayerMovement playerMovement;
     CheckAltitude checkAltitude;
+    float timer=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +26,10 @@ public class HUDManager : MonoBehaviour
         verticalSpeed.text = ((int)(playerMovement.GetHorizontalSpeed() *10)).ToString();
         horizontalSpeed.text = ((int)(playerMovement.GetVerticalSpeed() * 100)).ToString();
         altitude.text = ((int)(checkAltitude.GetAltitude() * 10)).ToString();
+        if(Time.timeScale ==1)
+        {
+            timer += Time.deltaTime;
+            time.text = ((int)timer).ToString();
+        }
     }
 }

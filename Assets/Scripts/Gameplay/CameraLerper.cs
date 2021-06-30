@@ -32,6 +32,7 @@ public class CameraLerper : MonoBehaviour
         {
             transform.position = startPos;
             cam.orthographicSize = startSizeCamera;
+            transform.position = startPos;
 
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed = 100;
+    [SerializeField] float rotationSpeed =100;
     [SerializeField] float powerForce;
     [SerializeField] float fuel = 10000;
     float direction;
@@ -28,14 +28,14 @@ public class PlayerMovement : MonoBehaviour
 
         horizontalVelocity = rb.velocity.x;
         verticalVelocity = rb.velocity.y;
-        if(isPaused())
+        if(isPaused() && fuel>0)
         {
             fuel--;
         }
     }
     private void FixedUpdate()
     {
-        if(upForce >0 && isPaused())
+        if(upForce >0 && isPaused() && fuel > 0)
         {
             rb.AddForce(transform.up * powerForce);
             fuel -= 10;
@@ -58,5 +58,9 @@ public class PlayerMovement : MonoBehaviour
     bool isPaused()
     {
         return Time.timeScale == 1;
+    }
+    public float GetRotation()
+    {
+        return transform.rotation.z;
     }
 }
