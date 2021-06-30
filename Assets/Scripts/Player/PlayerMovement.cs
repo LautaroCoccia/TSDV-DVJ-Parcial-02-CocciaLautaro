@@ -8,11 +8,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float powerForce;
     float horizontalTurn;
     float upVariable;
+
+    [SerializeField] float horizontalVelocity;
+    [SerializeField] float verticalVelocity;
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -21,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
         horizontalTurn = -Input.GetAxis("Horizontal");
         transform.Rotate(new Vector3(0, 0, rotationForce * horizontalTurn * Time.deltaTime));
         upVariable = Input.GetAxis("Vertical");
+
+        horizontalVelocity = rb.velocity.x;
+        verticalVelocity = rb.velocity.y;
     }
     private void FixedUpdate()
     {
