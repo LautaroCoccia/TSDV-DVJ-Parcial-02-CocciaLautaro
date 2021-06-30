@@ -11,7 +11,6 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelNumber++;
         level.text = "LEVEL: " + levelNumber;
         RestartLevel();
     }
@@ -30,6 +29,7 @@ public class LevelManager : MonoBehaviour
         if (actualTerrain != null)
             Destroy(actualTerrain);
         actualTerrain=Instantiate(terrains[Random.Range(0, terrains.Count)]);
+        levelNumber++;
         level.text = "LEVEL: " + levelNumber;
     }
 }

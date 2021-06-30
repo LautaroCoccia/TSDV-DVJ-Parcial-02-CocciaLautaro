@@ -2,8 +2,6 @@
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] float score;
-    [SerializeField] float time;
     private static GameManager _instanceGameManager;
     public static GameManager Get()
     {
@@ -19,10 +17,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    public void LoadScene(string scene)
-    {
-        SceneManager.LoadScene(scene);
     }
     public void ExitGame()
     {

@@ -13,9 +13,12 @@ public class HUDManager : MonoBehaviour
     PlayerMovement playerMovement;
     CheckAltitude checkAltitude;
     float timer=0;
+    int scoreUI = 0;
+    int highscore = 0;
     // Start is called before the first frame update
     void Start()
     {
+        highscore = Highscore.LoadHighscoreFile();
         score.text = 0.ToString();
         CheckPlayerCollision.setNewScore += UpdateScore;
         playerMovement = player.GetComponent<PlayerMovement>();
@@ -36,7 +39,12 @@ public class HUDManager : MonoBehaviour
     }
     void UpdateScore(ref int newScore)
     {
-        score.text += newScore;
+        scoreUI += newScore;
+        if(scoreUI> highscore)
+        {
+            Highscore.SaveHighscore(scoreUI);
+        }
+        score.text = scoreUI.ToString();
     }
     public void RestartHUD()
     {
@@ -44,7 +52,6 @@ public class HUDManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        
         CheckPlayerCollision.setNewScore += UpdateScore;
     }
 }
