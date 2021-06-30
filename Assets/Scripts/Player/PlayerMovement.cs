@@ -7,16 +7,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float rotationSpeed =100;
     [SerializeField] float powerForce;
     [SerializeField] float fuel = 10000;
+    [SerializeField] ParticleSystem particleSys;
     float direction;
     float upForce;
 
     [SerializeField] float horizontalVelocity;
     [SerializeField] float verticalVelocity;
     Rigidbody2D rb;
+
+    //To restart
+    Vector3 startPos;
+    float secondaryFuel = 5000;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -37,9 +43,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if(upForce >0 && isPaused() && fuel > 0)
         {
+            if(particleSys.isPlaying == false)
+            {
+                particleSys.Play(true);
+            }
             rb.AddForce(transform.up * powerForce);
             fuel -= 10;
         }
+        else
+        {
+            if (particleSys.isPlaying == true)
+            {
+                particleSys.Stop(true);
+            }
+        }
+            
     }
 
     public float GetFuel()
@@ -62,5 +80,10 @@ public class PlayerMovement : MonoBehaviour
     public float GetRotation()
     {
         return transform.rotation.z;
+    }
+    public void restartPlayer()
+    {
+        transform.position = startPos;
+        fuel += secondaryFuel;
     }
 }

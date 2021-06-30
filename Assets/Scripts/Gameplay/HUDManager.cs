@@ -16,6 +16,8 @@ public class HUDManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score.text = 0.ToString();
+        CheckPlayerCollision.setNewScore += UpdateScore;
         playerMovement = player.GetComponent<PlayerMovement>();
         checkAltitude = player.GetComponent<CheckAltitude>();
     }
@@ -31,5 +33,18 @@ public class HUDManager : MonoBehaviour
             timer += Time.deltaTime;
             time.text = ((int)timer).ToString();
         }
+    }
+    void UpdateScore(ref int newScore)
+    {
+        score.text += newScore;
+    }
+    public void RestartHUD()
+    {
+        timer = 0;
+    }
+    private void OnDisable()
+    {
+        
+        CheckPlayerCollision.setNewScore += UpdateScore;
     }
 }
