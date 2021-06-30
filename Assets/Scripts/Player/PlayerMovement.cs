@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float rotationForce;
+    [SerializeField] float rotationSpeed = 100;
     [SerializeField] float powerForce;
-    float horizontalTurn;
-    float upVariable;
+    [SerializeField] float fuel = 10000;
+    float direction;
+    float upForce;
 
     [SerializeField] float horizontalVelocity;
     [SerializeField] float verticalVelocity;
@@ -16,22 +17,46 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalTurn = -Input.GetAxis("Horizontal");
-        transform.Rotate(new Vector3(0, 0, rotationForce * horizontalTurn * Time.deltaTime));
-        upVariable = Input.GetAxis("Vertical");
+        direction = -Input.GetAxis("Horizontal");
+        transform.Rotate(new Vector3(0, 0, rotationSpeed * direction * Time.deltaTime));
+        upForce = Input.GetAxis("Vertical");
 
         horizontalVelocity = rb.velocity.x;
         verticalVelocity = rb.velocity.y;
+        if(isPaused())
+        {
+            fuel--;
+        }
     }
     private void FixedUpdate()
     {
-        if(upVariable >0)
+        if(upForce >0 && isPaused())
+        {
             rb.AddForce(transform.up * powerForce);
+            fuel -= 10;
+        }
+    }
+
+    public float GetFuel()
+    {
+        return fuel;
+    }
+    public float GetHorizontalSpeed()
+    {
+        return horizontalVelocity;
+    }
+    public float GetVerticalSpeed()
+    {
+        return verticalVelocity;
+    }
+
+    bool isPaused()
+    {
+        return Time.timeScale == 1;
     }
 }

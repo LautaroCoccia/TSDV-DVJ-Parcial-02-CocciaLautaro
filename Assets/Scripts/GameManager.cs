@@ -2,6 +2,8 @@
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] float score;
+    [SerializeField] float time;
     private static GameManager _instanceGameManager;
     public static GameManager Get()
     {
@@ -27,7 +29,6 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
-
         Application.Quit();
     }
 }

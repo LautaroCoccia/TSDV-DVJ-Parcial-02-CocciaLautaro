@@ -1,21 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using System;
 
 public class SplashManager : MonoBehaviour
 {
-    //[SerializeField] GameObject gameSplash;
-    //[SerializeField] GameObject cachuflitoSplash;
     [SerializeField] CanvasGroup gameSplashGroup;
     [SerializeField] CanvasGroup cachuflitoSplashGroup;
     [SerializeField] float maxTime = 2;
     float time = 0;
+    public static Action LoadMainMenuScene;
     // Start is called before the first frame update
     void Start()
     {
-        //gameSplash.SetActive(true);
-        //cachuflitoSplash.SetActive(false);
         gameSplashGroup.alpha = 0;
         cachuflitoSplashGroup.alpha = 0;
         StartCoroutine(Splasher());
@@ -59,6 +56,7 @@ public class SplashManager : MonoBehaviour
             yield return null;
         }
         time = 0;
+        LoadMainMenuScene?.Invoke();
 
     }
 

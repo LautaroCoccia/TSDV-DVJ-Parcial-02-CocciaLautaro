@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    private void Start()
+    {
+        SplashManager.LoadMainMenuScene += LoadMainMenuAtStart;
+    }
+    public void LoadMainMenuAtStart()
+    {
+        StartCoroutine(LoadAsynchronously(1));
+    }
     public void LoadLevelAsynchronously(int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
@@ -20,5 +28,10 @@ public class SceneLoader : MonoBehaviour
 
             yield return null;
         }
+    }
+    private void OnDisable()
+    {
+        SplashManager.LoadMainMenuScene -= LoadMainMenuAtStart;
+
     }
 }

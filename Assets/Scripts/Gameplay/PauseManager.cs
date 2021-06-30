@@ -41,7 +41,7 @@ public class PauseManager : MonoBehaviour
                 }
                 else
                 {
-                    pauseMenuUI.SetActive(false);
+                    Continue();
                 }
             }
         }
@@ -59,6 +59,6 @@ public class PauseManager : MonoBehaviour
         pauseMenuUI.SetActive(false);
         background.SetActive(false);
         mainPauseMenuUI.SetActive(false);
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
 }
