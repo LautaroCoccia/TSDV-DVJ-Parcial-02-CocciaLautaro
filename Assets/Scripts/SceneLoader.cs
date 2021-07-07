@@ -30,6 +30,5 @@ public class SceneLoader : MonoBehaviour
     private void OnDisable()
     {
         SplashManager.LoadMainMenuScene -= LoadMainMenuAtStart;
-
     }
 }

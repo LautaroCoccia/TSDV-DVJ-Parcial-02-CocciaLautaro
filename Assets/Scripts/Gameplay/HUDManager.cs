@@ -55,6 +55,6 @@ public class HUDManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        CheckPlayerCollision.setNewScore += UpdateScore;
+        CheckPlayerCollision.setNewScore -= UpdateScore;
     }
 }

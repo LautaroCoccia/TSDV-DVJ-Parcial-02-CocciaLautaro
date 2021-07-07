@@ -34,10 +34,6 @@ public class PlayerMovement : MonoBehaviour
 
         horizontalVelocity = rb.velocity.x;
         verticalVelocity = rb.velocity.y;
-        if(isPaused() && fuel>0)
-        {
-            fuel--;
-        }
     }
     private void FixedUpdate()
     {
